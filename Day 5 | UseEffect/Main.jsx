@@ -3,13 +3,14 @@ import "./App.css";
 export default function App() {
 
   let [NewsData, setNewsData] = useState([]);
-  let [Search, setSearch] = useState("India");
+  let [Search, setSearch] = useState();
+  let [SearchText, setSearchText] = useState("India");
   let [x, setX] = useState(0);
 
   useEffect(()=>{
     async function GetData()
     {
-      let Data = await fetch(`https://newsapi.org/v2/everything?q=${Search}&apiKey=20fd56da8c1247de82856d2fd80b1211`);
+      let Data = await fetch(`https://newsapi.org/v2/everything?q=${SearchText}&apiKey=20fd56da8c1247de82856d2fd80b1211`);
       Data = await Data.json();
       console.log(Data)
       setNewsData(Data.articles);
@@ -17,7 +18,7 @@ export default function App() {
     }
     GetData();
 
-  },[Search]);
+  },[SearchText]);
 
   return (
     <div>
@@ -28,7 +29,7 @@ export default function App() {
             setSearch(e.target.value);
             console.log(Search);
           }} type="text" />
-          <button>Search</button>
+          <button onClick={()=>{setSearchText(Search)}}>Search</button>
         </div>
         <ul>
           <li>Home</li>
@@ -60,11 +61,9 @@ export default function App() {
       </div>
           ))
         }
-
-
-
         
       </div>
     </div>
   );
 }
+
