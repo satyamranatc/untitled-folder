@@ -1,0 +1,23 @@
+nav
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+}
+
+nav ul
+
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 40px;
+    list-style: none;
+}
